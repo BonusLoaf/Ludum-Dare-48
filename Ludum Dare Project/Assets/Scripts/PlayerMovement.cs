@@ -16,11 +16,46 @@ public class PlayerMovement : MonoBehaviour
 
      Vector3 force;
 
+    public GameObject systemScript;
+
+    string target;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         force = strength * transform.right;
+
+        randomiseTarget();
+
+        systemScript.SendMessage("Initialise");
+
+    }
+
+    void randomiseTarget()
+    {
+
+        int rnd = Random.Range(0, SystemHandler.numOfTargets);
+
+        switch (rnd)
+        {
+            case 0:
+                target = "Billy The Squid";
+                break;
+            case 1:
+                target = "Sandy The Starfish";
+                break;
+            case 2:
+                target = "Chocolate Starfish";
+                break;
+            default:
+                target = "Billy The Squid";
+                break;
+        }
+
+        print(target);
+
+        PlayerPrefs.SetString("target", target);
     }
 
     // Update is called once per frame
