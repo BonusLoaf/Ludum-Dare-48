@@ -48,6 +48,15 @@ public class PlayerMovement : MonoBehaviour
             case 2:
                 target = "Chocolate Starfish";
                 break;
+            case 3:
+                target = "Phinn The Shark";
+                break;
+            case 4:
+                target = "Suzzie";
+                break;
+            case 5:
+                target = "Jingle The Jelly Fish";
+                break;
             default:
                 target = "Billy The Squid";
                 break;

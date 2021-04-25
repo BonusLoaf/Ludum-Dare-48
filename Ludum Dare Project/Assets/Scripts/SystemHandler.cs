@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SystemHandler : MonoBehaviour
 {
 
-    public static int numOfTargets = 3;
+    public static int numOfTargets = 6;
 
     public Image letter;
 
