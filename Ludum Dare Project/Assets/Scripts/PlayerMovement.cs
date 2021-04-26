@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float strength;
     public GameObject vision;
     bool spotCooldown = true;
+    public AudioSource swimSound;
+    public AudioSource bubbleLong;
 
     Color32 spotColour = new Color32(0xFF, 0xD5, 0x64, 0xFF);
 
@@ -55,7 +57,16 @@ public class PlayerMovement : MonoBehaviour
                 target = "Suzzie";
                 break;
             case 5:
-                target = "Jingle The Jelly Fish";
+                target = "Crimson The Fish";
+                break;
+            case 6:
+                target = "Emerald The Fish";
+                break;
+            case 7:
+                target = "Aqua The Fish";
+                break;
+            case 8:
+                target = "Fancy Francis";
                 break;
             default:
                 target = "Billy The Squid";
@@ -82,12 +93,14 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             rigidbody.AddRelativeForce(force);
+            swimSound.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             if (spotCooldown)
             {
+                bubbleLong.Play();
                 vision.SendMessage("TriggerSpot", SendMessageOptions.DontRequireReceiver);
                 spotlight.color = Color.white;
                 spotCooldown = false;
@@ -100,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
     void resetSpot()
     {
         spotlight.color = spotColour;
-        Invoke("spotCool", 5f);
+        Invoke("spotCool", 2f);
     }
 
     void spotCool()

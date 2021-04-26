@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SystemHandler : MonoBehaviour
 {
 
-    public static int numOfTargets = 6;
+    public static int numOfTargets = 9;
 
     public Image letter;
 
@@ -31,6 +32,11 @@ public class SystemHandler : MonoBehaviour
         
 
         Invoke("disableLetter", 5f);
+    }
+
+    public void exit()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void disableLetter()
